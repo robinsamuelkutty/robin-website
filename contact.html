@@ -118,7 +118,7 @@ Author URL: http://w3layouts.com
                     </ul>
                 </div>
                 <div class="col-md-6 contact-right mt-md-0 mt-5 ps-lg-0">
-                    <form action="https://script.google.com/macros/s/AKfycbyQJhQi2qjP4AVo-iiOuUXW3Ug-Gh2fDuEVEzl_/exec" method="post" class="signin-form">
+                    <form action="" id="submit-form" class="signin-form">
                         <div class="input-grids">
                             <input type="text" name="w3lName" id="w3lName" placeholder="Your Name*"
                                 class="contact-input" required="" />
@@ -248,6 +248,25 @@ Author URL: http://w3layouts.com
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- //bootstrap -->
     <!-- //Js scripts -->
+         <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbyQJhQi2qjP4AVo-iiOuUXW3Ug-Gh2fDuEVEzl_/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
